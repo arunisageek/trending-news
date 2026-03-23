@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: trending-postgres
+    environment:
+      POSTGRES_DB: trending_news
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - trending_postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: trending-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  trending_postgres_data:
